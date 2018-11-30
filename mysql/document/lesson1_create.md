@@ -6,6 +6,7 @@
 - [x] :maple_leaf: [`启动和关闭数据库`](#start)
 - [x] :maple_leaf: [`查看已有数据库`](#show)
 - [x] :maple_leaf: <a href="#createDataBase">`直接创建数据库`</a>
+- [x] :maple_leaf: [`删除数据库`](#drop)
 - [x] :maple_leaf: [`知识点`](#engine)
 - [x] :maple_leaf: [`数据库存储引擎`](#storage)
 
@@ -52,8 +53,8 @@ show create database sakila;
 :arrow_lower_right: `如果不指定字符串,那么结果就会使用意大利的字体,然后无法存储中文,会很麻烦` <br/>
 :arrow_lower_right: `If 判断,方式数据库名称重复冲突` <br/>
 ```mysql
- Create DataBase If Not Exists [ _your_dataBase_name ] Charset utf8 collate utf8_general_ci; 
- /*请替换 [ _your_dataBase_name ] 为你的数据库名称 */
+ Create DataBase If Not Exists [ _your_dataBase_name ] Charset utf8mb4 ; 
+ /*请替换 [ _your_dataBase_name ] 为你的数据库名称 推荐使用 utf8mb4 而不再是utf-8 */
 ```
 :two: `创建一个用户,把这个数据库的权限分配给他,以此作为数据库开发的指定使用用户`<br/>
 :arrow_lower_right: `为保护和减少对于root账户的使用,防止攻击` <br/>
@@ -67,6 +68,8 @@ show create database sakila;
   grant all on [ _your_dataBase_name ].* to '[ _your_user_name ]'@'%';
   -- 你也可以分配部分的权限
 ```
+#####  [删除数据库](#top) <b id="drop"></b> :maple_leaf:
+`删除数据库`: `drop database database_name`
 
 #####  [知识点](#top) <b id="engine"></b> :maple_leaf:
 `MYSQL 具有存储引擎 但是不是为数据库这个单位制定 而是制定给表` `例如为用户表制定 memory 存储引擎`
@@ -89,5 +92,6 @@ create table users
   * `在配置文件my.cnf中的 [mysqld] 下面加入 default-storage-engine=INNODB 一句`
 
 
-
+------
+[`2018/11/30 19:39`](#top)
 
