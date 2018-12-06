@@ -4,6 +4,7 @@
 `很多人用了很久的MYSQL 但是还是不知道怎么安装MYSQL 那么我们就开始吧Windows 安装MYSQL 很简单的就不谈了！` [`官方安装地址`](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 
 - [x] :maple_leaf: [`CentOS7 Yum 安装MYSQL`](#notice)
+- [x] :maple_leaf: [`新版本MYSQL的变化`](#change)
 
 ------
 ##### [CentOS7 Yum 安装MYSQL 8.0](#top)  :maple_leaf: <b id="notice"></b> 
@@ -36,3 +37,5 @@ mysql -uroot -p
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
 update user set host = '%' where user = 'root';
 ```
+##### [新版本MYSQL的变化](#top)  :maple_leaf: <b id="change"></b> 
+* `新版本的mysql 配置文件 my.ini文件 不在 安装根目录下 了  而在另一个文件夹下面 ` `C:\ProgramData\MySQL\MySQL Server 8.0`
