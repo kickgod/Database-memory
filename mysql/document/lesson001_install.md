@@ -5,6 +5,7 @@
 
 - [x] :maple_leaf: [`CentOS7 Yum 安装MYSQL`](#notice)
 - [x] :maple_leaf: [`新版本MYSQL的变化`](#change)
+- [x] :maple_leaf: [`MYSQL 大小写敏感问题`](#ignore)
 
 ------
 ##### [CentOS7 Yum 安装MYSQL 8.0](#top)  :maple_leaf: <b id="notice"></b> 
@@ -39,3 +40,10 @@ update user set host = '%' where user = 'root';
 ```
 ##### [新版本MYSQL的变化](#top)  :maple_leaf: <b id="change"></b> 
 * `新版本的mysql 配置文件 my.ini文件 不在 安装根目录下 了  而在另一个文件夹下面 ` `C:\ProgramData\MySQL\MySQL Server 8.0`
+##### [MYSQL 大小写敏感问题](#top)  :maple_leaf: <b id="ignore"></b>
+* `C:\ProgramData\MySQL\MySQL Server 8.0 找打my.ini 文件 将里面的 lower_case_table_names 设置为2` `因为mysql 数据库信息存放在表中 所以表对
+大小写敏感 所有信息都对大小写敏感了`
+* `大消息不敏感可以设置为 1 `
+```xml
+lower_case_table_names=2
+```
