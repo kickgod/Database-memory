@@ -5,8 +5,9 @@
 
 - [x]  [`1.创建表的语法`](#start)
 - [x]  [`2.使用约束`](#que)
+- [x]  [`3.查看表结构`](#show)
 ---
-
+show create table Teacher;
 #### 1.创建表的语法 <b id="start"></b>
 * `1.很简单 名称在前 类型随后 约束在右`
 * `2.注意创建表之前要先选中数据库`
@@ -19,7 +20,7 @@
   );
   ```
 #### 2.使用约束 <b id="que"></b>  
-* `约束有六大类`
+* `约束有七大类`
   * `主键约束`:`primary key`
     ```sql
     -- 创建时候 添加主键约束
@@ -115,7 +116,7 @@
     * `唯一性约束 要求该列唯一,允许为空,但是只能出现一个空值,唯一约束可以确保一列或者几列不出现重复值`
     * `auto_increment 自动增长列 必须要求瞒住 unique 约束`
     * `主键本身 unique 所以你懂的 你给主键 添加unique 没有用`
-    * `unique 和 主键的却别 在与主键 不允许空值 unique  允许一个空值  主键一个表只有一个  二unique 可以由多个`
+    * `unique 和 主键的区别 在与主键 不允许空值 unique  允许一个空值  主键一个表只有一个  而unique 可以有多个`
   * `默认约束`:`default 默认值`
     ```sql
     -- 字段名称 数据类型 Default 默认值
@@ -131,5 +132,54 @@
      ALTER TABLE lessons MODIFY lessonMark  int;
     ```
   * `自动增长`:`auto_increment`
+    ```sql
+    -- 建表的时候
+    TeaherID int primary key unique auto_increment
+    -- 建表之后增加
+    alter table t_user modify user_id INT(10) AUTO_INCREMENT;
+
+    alter table t_user change user_id user_id INT(10) AUTO_INCREMENT;
+    
+    -- 删除自增长
+    alter table t_user modify user_id INT(10);
+
+    alter table t_user change user_id user_id INT(10);
     ```
+    * `自动增长要求必须是 字段类型必须为 int 且满足 unique`
+    * `默认自增字段从1 开始 每次添加一条记录 该值自动加 1`
+  * `check 约束`:`check`
+    ```sql
+    -- check 约束
+    Sex char(2)NOT NULL  DEFAULT '男' CHECK (Sex IN ('男','女')) 
+    Age tinyint(4) NOT NULL DEFAULT '20' CHECK (Age between 15 and 30)
+    
+    -- 创建表的结尾添加
+    create table Teacher(
+        TeaherID int primary key auto_increment,
+        CollegeID_ int null, -- 这个老师属于哪个学院
+        TeacherName varchar(100) not null,
+        TeaherAge datetime not null,
+        constraint fk_teacher_to_colleage foreign key(CollegeID_) references College(CollegeID),
+        check(TeaherAge > 20)
+    )
+    
+    -- 删除约束
+    alter table 表名 drop constraint 约束名 
     ```
+#### 3.查看表结构 <b id="show"></b>    
+`查看基本表结构`：`Describe 表名` `简写`:`DESC 表名`
+```sql
+Desc Teacher;
+/*
+Field, Type, Null, Key, Default, Extra
+'TeaherID', 'int(11)', 'NO', 'PRI', NULL, 'auto_increment'
+'CollegeID_', 'int(11)', 'YES', 'MUL', NULL, ''
+'TeacherName', 'varchar(100)', 'NO', '', NULL, ''
+'TeaherAge', 'datetime', 'NO', '', NULL, ''
+*/
+```
+    
+    
+    
+    
+    
