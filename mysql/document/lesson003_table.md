@@ -5,6 +5,13 @@
 
 - [x]  [`1.创建表的语法`](#start)
 - [x]  [`2.使用约束`](#que)
+    * [`主键约束`](#one)
+    * [`外键约束`](#two)
+    * [`非空约束`](#three)
+    * [`唯一性约束`](#four)
+    * [`默认约束`](#five)
+    * [`自动增长`](#six)
+    * [`check 约束`](#seven)
 - [x]  [`3.查看表结构`](#show)
 ---
 show create table Teacher;
@@ -21,7 +28,7 @@ show create table Teacher;
   ```
 #### 2.使用约束 <b id="que"></b>  
 * `约束有七大类`
-  * `主键约束`:`primary key`
+  * `1.主键约束`:`primary key`  <b id="one"></b>
     ```sql
     -- 创建时候 添加主键约束
     
@@ -42,7 +49,7 @@ show create table Teacher;
     * `主键一定非空`
     * `主键一定是唯一 主键默认为聚集索引`
     * `主键可以由多个字段组成`：`Primary key(name,deptid)`
-  * `外键约束`:`foreign key`
+  * `2.外键约束`:`foreign key` <b id="two"></b>
     ```sql
     create database if not exists Mydb charset  utf8mb4;  
 
@@ -74,7 +81,7 @@ show create table Teacher;
     ```
     * `外键 一定要求两个表的字段 类型相同 链接出去的外键必须是主键  例如上面 CollegeID 是主键`
     * `子表的外键必须关联父表的主键`
-  * `非空约束`:`not null`
+  * `3.非空约束`:`not null` <b id="three"></b>
     ```sql
     -- 建表的时候添加非空约束
     create table College(
@@ -88,7 +95,7 @@ show create table Teacher;
     ALTER TABLE College modify CollegeName varchar(100) not null;
     ``` 
     * `外键一般都为null`
-  * `唯一性约束`:`unique`
+  * `4.唯一性约束`:`unique` <b id="four"></b>
     ```sql
     -- 在创建表的时候添加  
     
@@ -117,7 +124,7 @@ show create table Teacher;
     * `auto_increment 自动增长列 必须要求瞒住 unique 约束`
     * `主键本身 unique 所以你懂的 你给主键 添加unique 没有用`
     * `unique 和 主键的区别 在与主键 不允许空值 unique  允许一个空值  主键一个表只有一个  而unique 可以有多个`
-  * `默认约束`:`default 默认值`
+  * `5.默认约束`:`default 默认值` <b id="five"></b>
     ```sql
     -- 字段名称 数据类型 Default 默认值
     create table lessons(
@@ -131,7 +138,7 @@ show create table Teacher;
      -- 销毁默认
      ALTER TABLE lessons MODIFY lessonMark  int;
     ```
-  * `自动增长`:`auto_increment`
+  * `6.自动增长`:`auto_increment` <b id="six"></b>
     ```sql
     -- 建表的时候
     TeaherID int primary key unique auto_increment
@@ -147,7 +154,7 @@ show create table Teacher;
     ```
     * `自动增长要求必须是 字段类型必须为 int 且满足 unique`
     * `默认自增字段从1 开始 每次添加一条记录 该值自动加 1`
-  * `check 约束`:`check`
+  * `7.check 约束`:`check` <b id="seven"></b>
     ```sql
     -- check 约束
     Sex char(2)NOT NULL  DEFAULT '男' CHECK (Sex IN ('男','女')) 
@@ -178,8 +185,22 @@ Field, Type, Null, Key, Default, Extra
 'TeaherAge', 'datetime', 'NO', '', NULL, ''
 */
 ```
-    
-    
+`查看表的详细结构`：`Show Create table table_name`
+```sql
+show create table Teacher;
+/*
+CREATE TABLE `teacher` 
+(`TeaherID` int(11) NOT NULL AUTO_INCREMENT,
+`CollegeID_` int(11) DEFAULT NULL,
+`TeacherName` varchar(100) NOT NULL,
+`TeaherAge` datetime NOT NULL,
+PRIMARY KEY (`TeaherID`),
+KEY `fk_teacher_to_colleage` (`CollegeID_`),
+CONSTRAINT `fk_teacher_to_colleage` FOREIGN KEY (`CollegeID_`) 
+REFERENCES `college` (`collegeid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+*/
+```
     
     
     
