@@ -6,9 +6,11 @@
 #### [MYSQL 语言基础](#TOP)  `核心C#` :100: 
 :maple_leaf: `基础语法非常重要,如同打地基一样`
 
-- [x] [`MYSQL 数据库安装使用`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson001_install.md)
+- [x] [`1.MYSQL 数据库安装使用`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson001_install.md)
  
-- [x] [`MYSQL 数据库创建与管理`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson1_create.md)
+- [x] [`2.MYSQL 数据库创建与管理`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson001_install.md)
+
+- [x] [`3.MYSQL 表的操作与管理`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson003_table.md)
  
 
 
