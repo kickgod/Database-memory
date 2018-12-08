@@ -270,7 +270,7 @@ lessonStatus	tinyint(4)	YES
 lessonAdministrator	int(11)	NO			
 */
 ```
-#### 4.表的存储引擎 <b id="engine"></b>  
+#### 5.表的存储引擎 <b id="engine"></b>  
 `修改表的存储引擎 可以在创建表的时候指定存储引擎`
 * `show engines; 查看存储引擎`
 * `select version(); 查看系统版本`
