@@ -13,6 +13,9 @@
     * [`自动增长`](#six)
     * [`check 约束`](#seven)
 - [x]  [`3.查看表结构`](#show)
+- [x]  [`4.修改表结构`](#stuc)
+- [x]  [`5.表的存储引擎`](#engine)
+- [x]  [`6.删除表`](#delete)
 ---
 show create table Teacher;
 #### 1.创建表的语法 <b id="start"></b>
@@ -49,6 +52,7 @@ show create table Teacher;
     * `主键一定非空`
     * `主键一定是唯一 主键默认为聚集索引`
     * `主键可以由多个字段组成`：`Primary key(name,deptid)`
+    * `并不是每一个表都需要主键,只是当涉及到多个表的关系的时候需要主键`
   * `2.外键约束`:`foreign key` <b id="two"></b>
     ```sql
     create database if not exists Mydb charset  utf8mb4;  
@@ -169,7 +173,8 @@ show create table Teacher;
         constraint fk_teacher_to_colleage foreign key(CollegeID_) references College(CollegeID),
         check(TeaherAge > 20)
     )
-    
+    -- 建表后
+    alter table 表名 add constraint CK_字段名 check (条件表达式) --条件表达式中的条件用关系运算符连接
     -- 删除约束
     alter table 表名 drop constraint 约束名 
     ```
@@ -201,6 +206,86 @@ REFERENCES `college` (`collegeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 */
 ```
-    
-    
-    
+#### 4.修改表结构 <b id="stuc"></b>  
+##### `1. 修改表名称`:`alter table 旧表名 rename to 新名称 `
+```sql
+Create table Lessons(
+	lessonID int primary key auto_increment,
+    lessonName varchar(100) not null,
+    lessonStatus int default 40
+);
+
+alter table Lessons rename to Lesson;
+```
+##### `2. 修改字段数据类型`:`alter table 表名 modify 字段名称 数据类型 `
+```sql
+alter table Lesson modify lessonStatus tinyint;
+```
+##### `3. 修改字段名称`:`alter table <表名> change 旧字段名称 新字段名称 <新数据类型>`
+`change 可以一键修改两个内容 字段名称 数据类型`
+```sql
+alter table Lesson change  lessonStatus status tinyint(4) not null;
+```
+##### `4. 添加字段`:`alter table <表名> add 新字段名称 数据类型 [not null / default value]  `
+```sql
+-- 放在第一列
+alter table Lesson add column lessonAdministrator int not null first;
+
+desc Lesson;
+
+/*
+lessonAdministrator	int(11)	NO		
+lessonID	int(11)	NO	PRI		auto_increment
+lessonName	varchar(100)	NO			
+lessonStatus	tinyint(4)	YES			
+*/
+
+-- 放在lessonName 之后
+alter table Lesson add column lessonAdministrator int not null after lessonName;
+
+desc Lesson;
+
+/*
+lessonID	int(11)	NO	PRI		auto_increment
+lessonName	varchar(100)	NO			
+lessonAdministrator	int(11)	NO			
+lessonStatus	tinyint(4)	YES			
+*/
+```
+##### `5. 删除字段`:`alter table <表名> drop 字段名称  `
+```sql
+alter table Lesson drop lessonAdministrator;
+```
+##### `6. 修改字段排列顺序`:`alter table <表名> modify 字段名称 数据类型 first|after 字段  `
+`吧某一个字段 放在什么字段之前之后 没什么意义`
+```sql
+alter table lesson modify lessonAdministrator  int not null  after lessonStatus;
+
+desc Lesson;
+
+/*
+lessonID	int(11)	NO	PRI		auto_increment
+lessonName	varchar(100)	NO			
+lessonStatus	tinyint(4)	YES			
+lessonAdministrator	int(11)	NO			
+*/
+```
+#### 4.表的存储引擎 <b id="engine"></b>  
+`修改表的存储引擎 可以在创建表的时候指定存储引擎`
+* `show engines; 查看存储引擎`
+* `select version(); 查看系统版本`
+```sql
+create table Student(
+	StudentID varchar(40) primary key,
+	StudentName varchar(60) ,
+	StudentPassword varchar(200),
+	constraint unique_key_name UNIQUE(StudentID)
+)engine = Innodb;
+
+alter table  table_name Engine = MyisAM 
+```
+#### 6.删除表 <b id="delete"></b>  
+`删除表, Drop Table IF Exisit 表1,表2`
+```sql
+Drop Table Student；
+```
