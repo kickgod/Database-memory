@@ -119,9 +119,11 @@ show create table Teacher;
         StudentPassword varchar(200),
         constraint unique_key_name UNIQUE(StudentID)
     );
+    -- 键表之后
+    alter table producttype modify  TypeName  varchar(130) not null unique;
+ 
 
-
-    -- 创建表之后创建唯一约束
+    -- 创建表之后删除唯一约束
     alter table Student drop index unique_key_name;
     ```
     * `唯一性约束 要求该列唯一,允许为空,但是只能出现一个空值,唯一约束可以确保一列或者几列不出现重复值`
