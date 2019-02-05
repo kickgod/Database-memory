@@ -5,6 +5,7 @@
 
 - [x] [`1.变量的使用`](#target1)
 - [x] [`2.系统变量`](#target2)
+- [x] [`3.case when then end`](#target3)
 
 ------
 
@@ -43,8 +44,23 @@ Insert into TestTable(Name) Values("JxKicker");
 Set @Identity = Scope_IDentity();
 ```
 
+#####  :octocat: [2.case when then end](#top) <b id="target3"></b> 
+`Case具有两种格式。简单Case函数和Case搜索函数。`
 
-
+##### 简单Case函数
+```sql
+CASE sex
+ WHEN '1' THEN '男'
+ WHEN '2' THEN '女'
+ELSE '其他' END
+```
+##### Case搜索函数
+```sql
+CASE 
+  WHEN sex = '1' THEN '男'
+  WHEN sex = '2' THEN '女'
+ELSE '其他' END
+```
 
 --------------------
 `作者:` `模板` 
