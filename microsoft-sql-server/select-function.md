@@ -8,3 +8,5 @@ ROW_NUMBER() over(order by psd)
 //例子:
 select email,customerID, ROW_NUMBER() over(order by psd) as rows from QT_Customer
 ```
+##### 随机出现行 NEWID()
+··
