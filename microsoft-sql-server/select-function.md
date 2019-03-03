@@ -10,3 +10,10 @@ select email,customerID, ROW_NUMBER() over(order by psd) as rows from QT_Custome
 ```
 ##### 随机出现行 NEWID()
 ··
+
+#####  offset 20 rows fetch next 30 rows only 偏移
+```sql
+select SingleId from SingleChoices where ModuleId = 3
+order by ROW_NUMBER() over(order by newid())
+offset 20 rows fetch next 30 rows only; //偏移20行 取得下面30行
+```
