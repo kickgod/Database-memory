@@ -5,7 +5,6 @@
 
 - [x] [`1.启动和关闭数据库`](#start)
 - [x] [`2.查看已有数据库`](#show)
-
 - [x] <a href="#createDataBase">`3.直接创建数据库`</a>
 - [x] [`4.删除数据库`](#drop)
 - [x] [`5.知识点`](#engine)
@@ -41,16 +40,17 @@ sys
 world
 */
 ```
-#####  [3.查看数据库创建语句](#top) 
+#####  [3.查看数据库创建语句](#top)  
+
 [`Show Create database database_name`](#top)
+
 ```sql
 show create database sakila;
 
 'sakila', 'CREATE DATABASE `sakila` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */'
 ```
 
-#####  <a id="createDataBase" href="#createDataBase">4.直接创建数据库 </a>  :star2: <a href="#top"> :arrow_up: </a>
-:one: `创建一个数据库 并指定数据集为utf-8`<br/>
+#####  <a id="top" href="#createDataBase">4.直接创建数据库 </a>  
  `如果不指定字符串,那么结果就会使用意大利的字体,然后无法存储中文,会很麻烦` <br/>
  `If 判断,方式数据库名称重复冲突` <br/>
 ```mysql
