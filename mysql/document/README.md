@@ -6,11 +6,11 @@
 
 `基础语法非常重要,如同打地基一样`
 
-- [x] [`1.MYSQL 数据库安装使用`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson001_install.md)
+- [x] [`1.MYSQL 数据库安装使用`](./lesson001_install.md)
  
-- [x] [`2.MYSQL 数据库创建与管理`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson002_create.md)
+- [x] [`2.MYSQL 数据库创建与管理`](./lesson002_create.md)
 
-- [x] [`3.MYSQL 表的操作与管理`](https://github.com/kickgod/database-study/blob/master/mysql/document/lesson003_table.md)
+- [x] [`3.MYSQL 表的操作与管理`](./lesson003_table.md)
  
 
 
