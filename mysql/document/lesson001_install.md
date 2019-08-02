@@ -38,6 +38,11 @@ mysql -uroot -p
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new password';
 update user set host = '%' where user = 'root';
 ```
+```sql
+quit; //退出mysql
+systemctl restart  mysqld.service //重启服务 允许远程
+```
+
 ##### [新版本MYSQL的变化](#top)   <b id="change"></b> 
 * `新版本的mysql 配置文件 my.ini文件 不在 安装根目录下 了  而在另一个文件夹下面 ` `C:\ProgramData\MySQL\MySQL Server 8.0`
 ##### [MYSQL 大小写敏感问题](#top)   <b id="ignore"></b>
