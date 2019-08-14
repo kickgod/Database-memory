@@ -7,6 +7,8 @@
 - [x] [`2.整型数据`](#int)
 - [x] [`3.浮点数和定点数数据`](#float)
 - [x] [`4.日期与时间类型`](#timeday)
+- [x] [`5.文本字符串类型`](#text)
+- [x] [`6.二进制字符串类型`](#binary)
 
 ----
 
@@ -39,11 +41,11 @@
 |---------|:---|:----|:----|-----|
 |Float|`很常用 单精度浮点数`|`4个字节`|`显示宽度 通过MN 定义`|`自己查询`|
 |Double|`双精度浮点数 很常用`|`四个字节`|`MN 定义`|`自己查询`|
-|BigInt|`定点数 严格的定点数 有很高的精度`|`M+2 个字节 M：精度`|`默认精度 (10,0）`|`很高 自己查询`|
+|Decimal(M,D)|`定点数 严格的定点数 有很高的精度`|`M+2 个字节 M：精度`|`默认精度(10,0小数后点允许保存0位`|`很高 自己查询`|
 
 
-* `1. 注意: Float 和Double 会自动进行四舍五入的 例如对于 Double(5.1)  5.125 会被四舍五入为 5.1 这是默认的不发生任何警告 但是对于 Dicimal(5.1)来说 定点小数 会报错误 不允许 5.125 插入`
-   * `Decimal(5.2)`:`5.2602 会插入报错 小数位数最多只允许两位`
+* `1. 注意: Float 和Double 会自动进行四舍五入的 例如对于 Double(5.1)  5.125 会被四舍五入为 5.1 这是默认的不发生任何警告 但是对于 Dicimal(5,1)来说 定点小数 会报错误 不允许 5.125 插入`
+   * `Decimal(5,2)`:`5.2602 会插入报错 小数位数最多只允许两位`
 
 ##### :triangular_flag_on_post: [日期与时间类型](#top) <b id="timeday"></b> 
 `主要用DateTime Date 啊 其他各种类型的时间数据都可以通过时间函数 老获取 就可以避免其他时间日期数据类型的坑了`
@@ -72,11 +74,59 @@
 |`Char(M)`|`M 字节 1~255 之间`|`固定长度非二进制字符串 不够长 添加空格`|
 |`VarChar(M)`|`L+1 字节 L<=M和 1<=M <= 255` |`变长非二进制字符串`|
 |`TinyText`|`L+1字节 L<2^8`|`非常小的字符串`|
-|`Text`|L+2  L < 2^16|`文本` |
-|`MediumText`|L+3  L < 2^24|`文本` |
-|`LongText`|L+4  L < 2^32|`文本` |
+|`Text`|`L+2  L < 2^16`|`文本` |
+|`MediumText`|`L+3  L < 2^24`|`文本` |
+|`LongText`|`L+4  L < 2^32`|`文本` |
+|`Enum`|`枚举类型，只能有一个枚举字符串`|`存储大小为一个或两个字节取决于枚举值的数据 最大65535` |
+|`Set`|`1,2,3,4或8个字节，取决于集合成员的数量（最多64个成员）`|`一个集合，字符串可以有零个或多个成员` |
 
+##### 枚举Enum 集合 Set 使用例子
 
+```sql
+create database If Not Exists deprive Charset utf8mb4 ; -- 创建数据库
+
+use deprive;-- 选择数据库
+
+create table if not Exists tempTable(
+    tempId int unique primary key auto_increment,
+    sex Enum('男', '女'),
+    occupation Set('teacher','doctor','programmer','lawyer','labor','student','official', 
+    'worker','accountant', 'advocate'),
+    uName varchar(40) not null
+);
+
+insert into tempTable(sex,occupation,uName) values('男', 'teacher,doctor,lawyer','蒋星');
+
+select * from tempTable;
+
+/*
+# tempId, sex, occupation, uName
+'1', '男', 'teacher,doctor,lawyer', '蒋星'
+*/
+```
+
+##### :triangular_flag_on_post: [二进制字符串类型](#top) <b id="binary"></b> 
+
+```sql
+create table tempBit ( bitFiled Bit(4));
+
+insert into tempBit values(2),(9),(15);
+
+select BIN(bitFiled) from tempBit; --BIN 转换为二进制
+
+/*
+# Bin(bitFiled)
+'10'
+'1001'
+'1111'
+*/
+```
+
+|`类型名称`|`存储`|`说明`|
+|:-----|:-----|:-----|
+|`Bit(M)`|`大约M+7/8 个字节`|`位字段类型`|
+|`Binary(M)`|`M个字节`|`固定长度二进制字符`|
+|`varBinary(M)`|`M+1个字节`|`可变长度二进制字符`|
 
 
 
