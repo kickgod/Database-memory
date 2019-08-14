@@ -51,7 +51,7 @@ show create database sakila;
 ```
 
 #####  <a id="top" href="#createDataBase">4.直接创建数据库 </a>  
- `如果不指定字符串,那么结果就会使用意大利的字体,然后无法存储中文,会很麻烦` <br/>
+ :one: `如果不指定字符串,那么结果就会使用意大利的字体,然后无法存储中文,会很麻烦` <br/>
  `If 判断,方式数据库名称重复冲突` <br/>
 ```mysql
  Create DataBase If Not Exists [ _your_dataBase_name ] Charset utf8mb4 ; 
@@ -93,6 +93,18 @@ create table users
   * `在配置文件my.cnf中的 [mysqld] 下面加入 default-storage-engine=INNODB 一句`
 
 ------
+```c
+InnoDB	DEFAULT	Supports transactions, row-level locking, and foreign keys	YES	YES	YES
+FEDERATED	NO	Federated MySQL storage engine			
+MEMORY	YES	Hash based, stored in memory, useful for temporary tables	NO	NO	NO
+PERFORMANCE_SCHEMA	YES	Performance Schema	NO	NO	NO
+MyISAM	YES	MyISAM storage engine	NO	NO	NO
+MRG_MYISAM	YES	Collection of identical MyISAM tables	NO	NO	NO
+BLACKHOLE	YES	/dev/null storage engine (anything you write to it disappears)	NO	NO	NO
+CSV	YES	CSV storage engine	NO	NO	NO
+ARCHIVE	YES	Archive storage engine	NO	NO	NO
+
+```
 
 [`2018/11/30 19:39`](#top)
 
