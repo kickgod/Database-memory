@@ -12,6 +12,7 @@
 
 - [x] [`3.MYSQL 表的操作与管理`](./lesson003_table.md)
  
+- [x] [`4.MYSQL 数据类型`](./lesson004_dataType.md)
 
 
 
