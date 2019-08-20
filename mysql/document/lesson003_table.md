@@ -17,7 +17,8 @@
 - [x]  [`5.表的存储引擎`](#engine)
 - [x]  [`6.删除表`](#delete)
 ---
-show create table Teacher;
+`show create table Teacher;`:`查看表结构`
+
 #### 1.创建表的语法 <b id="start"></b>
 * `1.很简单 名称在前 类型随后 约束在右`
 * `2.注意创建表之前要先选中数据库`
