@@ -19,7 +19,7 @@
 ---
 `show create table Teacher;`:`查看表结构`
 
-#### 1.创建表的语法 <b id="start"></b>
+##### [1.创建表的语法](#top) <b id="start"></b>
 * `1.很简单 名称在前 类型随后 约束在右`
 * `2.注意创建表之前要先选中数据库`
 
@@ -30,7 +30,7 @@
     configuration varchar(100)
   );
   ```
-#### 2.使用约束 <b id="que"></b>  
+##### [2.使用约束](#top) <b id="que"></b>  
 * `约束有七大类`
   * `1.主键约束`:`primary key`  <b id="one"></b>
     ```sql
@@ -181,7 +181,7 @@
     -- 删除约束
     alter table 表名 drop constraint 约束名 
     ```
-#### 3.查看表结构 <b id="show"></b>    
+##### [3.查看表结构](#top) <b id="show"></b>    
 `查看基本表结构`：`Describe 表名` `简写`:`DESC 表名`
 ```sql
 Desc Teacher;
@@ -209,7 +209,7 @@ REFERENCES `college` (`collegeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 */
 ```
-#### 4.修改表结构 <b id="stuc"></b>  
+##### [4.修改表结构](#top) <b id="stuc"></b>  
 ##### `1. 修改表名称`:`alter table 旧表名 rename to 新名称 `
 ```sql
 Create table Lessons(
@@ -273,7 +273,7 @@ lessonStatus	tinyint(4)	YES
 lessonAdministrator	int(11)	NO			
 */
 ```
-#### 5.表的存储引擎 <b id="engine"></b>  
+##### [5.表的存储引擎](#top) <b id="engine"></b>  
 `修改表的存储引擎 可以在创建表的时候指定存储引擎`
 * `show engines; 查看存储引擎`
 * `select version(); 查看系统版本`
@@ -287,7 +287,7 @@ create table Student(
 
 alter table  table_name Engine = MyisAM 
 ```
-#### 6.删除表 <b id="delete"></b>  
+##### [6.删除表](#top) <b id="delete"></b>  
 `删除表, Drop Table IF Exisit 表1,表2`
 ```sql
 Drop Table Student；
