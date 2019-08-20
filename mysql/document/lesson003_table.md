@@ -97,7 +97,7 @@
     -- 添加非空约束
     ALTER TABLE College modify CollegeName varchar(100) not null;
     -- 删除非空约束
-    ALTER TABLE College modify CollegeName varchar(100) not null;
+    ALTER TABLE College modify CollegeName varchar(100);
     ``` 
     * `外键一般都为null`
   * `4.唯一性约束`:`unique` <b id="four"></b>
