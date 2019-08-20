@@ -213,7 +213,7 @@ REFERENCES `college` (`collegeid`)
 ##### `1. 修改表名称`:`alter table 旧表名 rename to 新名称 `
 ```sql
 Create table Lessons(
-	lessonID int primary key auto_increment,
+    lessonID int primary key auto_increment,
     lessonName varchar(100) not null,
     lessonStatus int default 40
 );
