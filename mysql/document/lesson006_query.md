@@ -9,11 +9,15 @@
 ----
 ##### [1.基本语句](#top) <b id="aim1"></b>
 
-`一个简单的子查询`
+`几个简单的查询`
 ```sql
 select A.Name as Employee from Employee as A 
 where 
 A.Salary > (select Salary from  Employee where Id = A.ManagerId);
+```
+
+```mysql
+select class from courses group by class having count(distinct student) >= 5
 ```
 
 ##### 增删改
