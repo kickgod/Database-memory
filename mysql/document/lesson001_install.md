@@ -3,9 +3,9 @@
 ----
 `很多人用了很久的MYSQL 但是还是不知道怎么安装MYSQL 那么我们就开始吧Windows 安装MYSQL 很简单的就不谈了！` [`官方安装地址`](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 
-- [x] :maple_leaf: [`CentOS7 Yum 安装MYSQL`](#notice)
-- [x] :maple_leaf: [`新版本MYSQL的变化`](#change)
-- [x] :maple_leaf: [`MYSQL 大小写敏感问题`](#ignore)
+- [x] [`CentOS7 Yum 安装MYSQL`](#notice)
+- [x] [`新版本MYSQL的变化`](#change)
+- [x] [`MYSQL 大小写敏感问题`](#ignore)
 
 ------
 ##### [CentOS7 Yum 安装MYSQL 8.0](#top)  <b id="notice"></b> 
